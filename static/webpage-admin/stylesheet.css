@@ -1,0 +1,48 @@
+#mainDiv {
+    margin: 10px;
+}
+
+#connectionStatusDiv {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 30px;
+}
+#label1-div {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+#forwardMovementConfig-div {
+    margin: 10px;
+}
+#leftMovementConfig-div {
+    margin: 10px;
+}
+#rightMovementConfig-div {
+    margin: 10px;
+}
+#movementConfigs-div {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+#save-reload-movements-div {
+    display: flex;
+    justify-content: center;
+}
+#testMovements-div {
+    display: flex;
+    justify-content: center;
+}
+.buttonClass {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+}

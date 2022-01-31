@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jabuti X - Página do Admin</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body style="background-color:rgb(129, 252, 160)">
+
+    <div id="mainDiv">
+
+        <div id="connectionStatusDiv">
+        <b id = "connectionStatusLabel">Conexão com o jabuti físico: Desconectado</b>
+        </div>
+
+        <br>
+
+        <div id="label1-div">
+
+            <b>Configurações de movimentos discretos:</b>
+
+        </div>
+        
+        <div id="movementConfigs-div">
+
+            <div id="forwardMovementConfig-div">
+
+                <b>Movimento para a frente:</b>
+                <br>
+                <label for="forward-leftWheelPower-percentage">Potência na roda esquerda (%):</label>
+                <br>
+                <input type="number" value=100 min=0 max=100 step="0.01" id="forward-leftWheelPower-percentage"/>
+                <br>
+                <label for="forward-rightWheelPower-percentage">Potência na roda direita (%):</label>
+                <br>
+                <input type="number" value=100 min=0 max=100 step="0.01" id="forward-rightWheelPower-percentage"/>
+                <br>
+                <label for="forward-timeApplyingPower">Tempo aplicando potências (ms):</label>
+                <br>
+                <input type="number" value=1000 min=0 step="1" id="forward-timeApplyingPower"/>
+                <br>
+                <label for="forward-timeToWaitAfterPowerApplied">Delay após movimento (ms):</label>
+                <br>
+                <input type="number" value=1000 min=0 step="1" id="forward-timeToWaitAfterPowerApplied"/>
+
+            </div>
+
+            <div id="leftMovementConfig-div">
+
+                <b>Movimento para a esquerda:</b>
+                <br>
+                <label for="left-leftWheelPower-percentage">Potência na roda esquerda (%):</label>
+                <br>
+                <input type="number" value=100 min=0 max=100 step="0.01" id="left-leftWheelPower-percentage"/>
+                <br>
+                <label for="left-rightWheelPower-percentage">Potência na roda direita (%):</label>
+                <br>
+                <input type="number" value=0 min=0 max=100 step="0.01" id="left-rightWheelPower-percentage"/>
+                <br>
+                <label for="left-timeApplyingPower">Tempo aplicando potências (ms):</label>
+                <br>
+                <input type="number" value=1000 min=0 step="1" id="left-timeApplyingPower"/>
+                <br>
+                <label for="left-timeToWaitAfterPowerApplied">Delay após movimento (ms):</label>
+                <br>
+                <input type="number" value=1000 min=0 step="1" id="left-timeToWaitAfterPowerApplied"/>
+            
+            </div>
+
+            <div id="rightMovementConfig-div">
+
+                <b>Movimento para a frente:</b>
+                <br>
+                <label for="right-leftWheelPower-percentage">Potência na roda esquerda (%):</label>
+                <br>
+                <input type="number" value=0 min=0 max=100 step="0.01" id="right-leftWheelPower-percentage"/>
+                <br>
+                <label for="right-rightWheelPower-percentage">Potência na roda direita (%):</label>
+                <br>
+                <input type="number" value=100 min=0 max=100 step="0.01" id="right-rightWheelPower-percentage"/>
+                <br>
+                <label for="right-timeApplyingPower">Tempo aplicando potências (ms):</label>
+                <br>
+                <input type="number" value=1000 min=0 step="1" id="right-timeApplyingPower"/>
+                <br>
+                <label for="right-timeToWaitAfterPowerApplied">Delay após movimento (ms):</label>
+                <br>
+                <input type="number" value=1000 min=0 step="1" id="right-timeToWaitAfterPowerApplied"/>
+                <br>
+
+            </div>
+
+        </div>
+
+        <script type="text/javascript">
+            function checkMinMax(event) {
+                var value = this.value,
+                    min = this.getAttribute('min'),
+                    max = this.getAttribute('max');
+
+
+                if(parseInt(value) < min && parseInt(min) != 0)
+                    this.value = parseInt(min);
+                else if(parseInt(value) > parseInt(max))
+                    this.value = parseInt(max);
+            }
+
+            window.addEventListener('load', function() {
+                document.getElementById('forward-leftWheelPower-percentage').addEventListener('keyup', checkMinMax);
+                document.getElementById('forward-rightWheelPower-percentage').addEventListener('keyup', checkMinMax);
+
+                document.getElementById('left-leftWheelPower-percentage').addEventListener('keyup', checkMinMax);
+                document.getElementById('left-rightWheelPower-percentage').addEventListener('keyup', checkMinMax);
+
+                document.getElementById('right-leftWheelPower-percentage').addEventListener('keyup', checkMinMax);
+                document.getElementById('right-rightWheelPower-percentage').addEventListener('keyup', checkMinMax);
+            });
+        </script>
+
+
+        <div id="save-reload-movements-div">
+        
+            <button onclick="saveDiscreteMvConfig_callback()" id="save-discretemv-config" class="buttonClass">Salvar configurações de movimentos discretos</button>
+            <button onclick="reloadDiscreteMvConfig_callback()" id="reload-discretemv-config" class="buttonClass">Recarregar configurações de movimentos discretos</button>
+    
+        </div>
+
+        <br>
+
+        <div id="testMovements-div">
+
+            <button onclick="testForwardMovement_callback()" id="test-forward-movement" class="buttonClass">Testar movimento à frente</button>
+            <button onclick="testLeftMovement_callback()" id="test-left-movement" class="buttonClass">Testar movimento à esquerda</button>
+            <button onclick="testRightMovement_callback()" id="test-right-movement" class="buttonClass">Testar movimento à direita</button>
+
+        </div>
+
+    </div>
+
+    <script defer src="webpage-admin/main.js"></script>
+
+</body>
+
+</html>
